@@ -1,0 +1,37 @@
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-database
+    restart: on-failure
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"                   
+    volumes:
+      - db_data:/var/lib/mysql      
+      - ./e-todo.sql:/docker-entrypoint-initdb.d/e-todo.sql
+
+
+  backend:
+    build: ./backend
+    restart: on-failure
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_started
+
+  frontend:
+    build: ./frontend
+    restart: on-failure
+    ports:
+      - "5173:4000"
+    depends_on:
+      backend:
+        condition: service_started
+
+volumes:
+  db_data:

@@ -1,0 +1,142 @@
+input {
+  all: unset;
+}
+
+.form-modal-container {
+  width: 500px;
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #27272a;
+  padding: 45px 20px 20px 20px;
+  border-radius: 24px;
+}
+
+.overlay-background {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.form-label-description {
+  margin-bottom: 10px;
+}
+
+.form-input-field {
+  margin: 2px;
+  word-wrap: break-word;
+  padding: 3px;
+}
+
+.form-input-field:focus {
+  margin:0;
+  border: 2px white solid;
+  border-radius: 5px;
+}
+
+.input-description {
+  margin: 0;
+  padding: 0 5px;
+  width: 100%;
+  resize: none;
+  border: solid white 2px;
+  border-radius: 5px;
+  min-height: 52px;
+  field-sizing: content;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 250px;
+  padding: 8px;
+}
+
+.form-submit-button{
+  height: 40px;
+  padding: 0 20px;
+  background-color: #333;
+  color: white;
+  border-radius: 12px;
+  border: solid 3px #555;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.form-submit-button:hover {
+  background-color: #444;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quit {
+  position: absolute;
+  top: 10px;
+  right:50px
+}
+
+.quit-add {
+  position: absolute;
+  top: 10px;
+  right: 15px
+}
+
+.quit:hover, .quit-add:hover {
+  cursor: pointer;
+}
+
+.delete {
+  position: absolute;
+  top: 12px;
+  right: 18px
+}
+
+.delete:hover {
+  cursor: pointer;
+}
+
+.status {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+}
+
+.status-option {
+  color: white;
+  background-color: #414041;
+}
+
+
+@media (max-width: 600px) {
+  .form-modal-container {
+    width: 450px;
+  }
+}
+
+@media (max-width: 500px) {
+  .form-modal-container {
+    width: auto;
+  }
+}
