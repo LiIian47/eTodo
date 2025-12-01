@@ -1,58 +1,199 @@
-Manuel D'utilisation : 
+# Etodo — Task Management Web Application
 
-     -Lancement du Front-End , Back-End et de la Base de Donnee.
-            1. -- Executer docker compose up -d --build. (Si besoin sudo docker compose up -d --build). --
-            2. -- Ouvrir un navigateur web et copier coller cette adresse : http://localhost:5173. --
-                Si besoin vous devrez peut etre rajouter un .env a la racine du projet.
-                    Dans celui-ci vous devrez entrer ces valeurs : 
-                        MYSQL_DATABASE=todoapp
-                        MYSQL_HOST=db
-                        MYSQL_USER_BACK=root
-                        MYSQL_ROOT_PASSWORD=root
-                        PORT=3000
-                        JWT_SECRET=MaSuperCléSecrèteUltraSécurisée
+<p align="center">
+  <img src="frontend/src/pages/images/todoLogo.png" alt="Logo" width="120" />
+</p>
 
-            3. -- Voila maintenant vous vous retrouvez sur la page principale. --
-    
-     -Utilisation de notre site Etodo:
-            1. -- Si vous n'avez de compte veuillez cloquer sur register sinon login.--
-            2. -- Register : 
-                            -Veuillez saisir un nom , prenom , email et mot de passe.
-               -- Login : 
-                            -Veulliez saisir votre email et votre mot de passe.
+Etodo est une application web moderne permettant de gérer vos tâches via un tableau **Kanban** intuitif.  
+Elle permet de créer, organiser, modifier, rechercher et supprimer des tâches facilement.  
+Le projet est composé d'un **Front-End**, **Back-End**, et d'une **base de données MySQL**, le tout orchestré avec **Docker**.
 
-            3. Vous etes maintenant connectes a votre compte etodo:
-               -- Vous pouvez ajouter des tasks avec le bouton New Task situe en haut a droite de la page.
+---
 
-               -- Un menu s'ouvrira , dans celui ci veuillez a remplir obligatoirement un Titre , une Description 
-                        et une Date de rendue. Sauvegardez le tout avec le bouton <Add>.
+## Table des matières
+1. [À propos du projet](#à-propos-du-projet)
+2. [Technologies utilisées](#technologies-utilisées)
+3. [Prérequis](#prérequis)
+4. [Installation](#installation)
+5. [Configuration](#configuration)
+6. [Lancement de l'application](#lancement-de-lapplication)
+7. [Utilisation](#utilisation)
+8. [Fonctionnalités](#fonctionnalités)
+9. [Contribuer](#contribuer)
+10. [Licence](#licence)
+11. [Contact](#contact)
 
-               -- Vous venez maintenant de creer une carte. Par default elle se situera dans la colonne "Not Started".
-                        Vous pouvez la bouger en la maintenant cliquee et en la glissant sur les trois autres colonnes qui sont :
-                            "Todo" , "In Progress" et "Done".
+---
 
-               -- Vous pouvez donc grace a ce systeme organiser vos cartes comme bon vous semble.
-                       - Si vous avez besoin de supprimer une de vos taches , vous pouvez cliquer sur update et 
-                            la poubelle situee en haut a droite du formulaire.
-                       - Si par contre vous avez besoin de modifier votre taches pour n'importe quelles raisons,
-                            veuillez cliquer sur update puis la chose que vous voulez modifier soit le titre , la description
-                                ou la date.
-                
-                -- En haut de la page vous allez trouver une barre de recherche.
-                    - Pour l'utiliser rien de plus simple selectionner la et remplissez la avec le titre de la taches que 
-                        vous recherchez. Elle devrait apparaitre en brillant.
+## À propos du projet
 
-                -- Un menu deroulant et a votre disposisiton.
-                    - Pour l'utiliser veuiller selectionner les trois barres en haut a droite.
-                        Des boutons light mode , Settings , et Logout devraient apparaitre.
-                            Light mode > pour changer de sombre a clair le site web et inversement.
-                            Settings > bouton qui affichera vos parametres utilisateurs.
-                            Logout > pour bous deconnecter.
-                    Settings > 
-                        Une fois ouvert : vous pouvez changer votre nom , prenom , email et mot de passe.
-                            Vous pouvez aussi si vous le souhaitez supprimer votre compte avec le bouton <Delete Account>
-                            Sinon vous voulez confirmer vos changements avec Confirm et si aucun changement a ete fait vous pouvez 
-                                revenir a la page principale avec le bouton <Todo>
+Etodo est conçu pour offrir une expérience simple, fluide et efficace dans la gestion de tâches.  
+Grâce à son interface en colonnes **Not Started**, **To Do**, **In Progress**, et **Done**, vous pouvez organiser visuellement votre travail.
 
-            ---- Vous savez maintenant comment utiliser a la perfection notre application site web ----
+**Voici pourquoi Etodo est pratique :**
 
+- Interface moderne et intuitive  
+- Kanban clair et facile à manipuler  
+- Expérience utilisateur fluide  
+- Fonctionnalités complètes (CRUD tâches, recherche, thèmes, paramètres, compte...)  
+
+<p align="center">
+  <img src="frontend/src/pages/images/todo.png" alt="Screenshot" />
+</p>
+
+---
+
+## Technologies utilisées
+
+### Front-End
+- React
+- Vite
+- TailwindCSS
+
+### Back-End
+- Node.js  
+- Express  
+- JWT  
+
+### Base de données
+- MySQL  
+
+### Infrastructure
+- Docker  
+- Docker Compose  
+
+---
+
+## Prérequis
+
+- Docker et Docker Compose  
+- Navigateur moderne  
+- Fichier `.env` configuré  
+
+---
+
+## Installation
+
+Clonez le projet puis lancez :
+
+```bash
+docker compose up -d --build
+```
+
+Si nécessaire (avec sudo) :
+
+```bash
+sudo docker compose up -d --build
+```
+
+---
+
+## Configuration
+
+Si le fichier `.env` est absent, créez-le avec :
+
+```env
+MYSQL_DATABASE=todoapp
+MYSQL_HOST=db
+MYSQL_USER_BACK=<votre_utilisateur>
+MYSQL_ROOT_PASSWORD=<votre_mot_de_passe>
+PORT=3000
+JWT_SECRET=<votre_secret_jwt>
+```
+
+**Important :** N'oubliez pas d'adapter les valeurs selon votre configuration.
+
+---
+
+## Lancement de l'application
+
+### Démarrer les conteneurs
+
+```bash
+docker compose up -d --build
+```
+
+### Ouvrir dans un navigateur
+
+Accédez à l'application via : **http://localhost:5173**
+
+L'application est prête à être utilisée !
+
+---
+
+## Utilisation
+
+### Authentification
+
+**Inscription :**
+- Prénom
+- Nom
+- Email
+- Mot de passe
+
+**Connexion :**
+- Email
+- Mot de passe
+
+### Créer une tâche
+
+1. Cliquez sur **New Task**
+2. Renseignez les informations :
+   - Titre
+   - Description
+   - Date d'échéance
+   - Statue
+3. Cliquez sur **Add**
+
+La tâche apparaît dans la colonne sélectionner
+
+### Gérer les tâches
+
+- **Déplacer une tâche :** glissez-déposez entre les colonnes (drag & drop)
+- **Modifier :** cliquez sur **Update**
+- **Supprimer :** cliquez sur l'icône poubelle dans le formulaire d'édition
+
+### Rechercher des tâches
+
+Utilisez la barre de recherche en haut de l'écran et entrez le titre de la tâche recherchée.
+
+### Menu déroulant
+
+Accessible en haut à droite de l'interface :
+
+- **Light / Dark mode** : basculer entre thème clair et sombre
+- **Settings** : accéder aux paramètres du compte
+- **Logout** : se déconnecter
+
+### Page Paramètres
+
+Dans les paramètres, vous pouvez :
+
+- Modifier votre prénom, nom et email
+- Changer votre mot de passe
+- Supprimer votre compte
+- Confirmer les modifications avec **Confirm**
+- Revenir au tableau avec **Todo**
+
+---
+
+## Fonctionnalités
+
+- ✅ Authentification JWT sécurisée
+- ✅ Tableau Kanban interactif
+- ✅ CRUD complet sur les tâches
+- ✅ Glisser-déposer (drag & drop)
+- ✅ Thème clair/sombre
+- ✅ Recherche de tâches intégrée
+- ✅ Gestion des paramètres utilisateur
+- ✅ Suppression de compte
+- ✅ Architecture conteneurisée avec Docker
+
+---
+
+## Contact
+
+**Lilian Davezac**
+
+- GitHub : [LiIian47](https://github.com/LiIian47)
+- LinkedIn : [Profil LinkedIn](https://www.linkedin.com/in/lilian-davezac-392990397/)
