@@ -16,6 +16,7 @@ export function TaskCard({ task, refresh }: TaskCardProps) {
   const [title, setTitle] = useState("");
   const [due_time, setDueTime] = useState("");
   const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("")
 
   async function GetTask() {
     const token = localStorage.getItem("token");
@@ -32,6 +33,7 @@ export function TaskCard({ task, refresh }: TaskCardProps) {
     setTitle(data.title);
     setDueTime(formatDate);
     setDescription(data.description);
+    setStatus(data.status)
   }
 
   async function UpdateTask(event: any) {
@@ -51,7 +53,7 @@ export function TaskCard({ task, refresh }: TaskCardProps) {
     });
     await response.json();
     GetTask();
-    refresh();GetTask
+    refresh();
   }
 
   useEffect(() => {
@@ -72,7 +74,7 @@ export function TaskCard({ task, refresh }: TaskCardProps) {
               <input className="form-input-field input-due-time" defaultValue={(due_time.replace(" ","T")).substr(0,16)} id="due_time" type="datetime-local" required/>
               <button className='form-submit-button' type="submit">Save</button>
             </div>
-            <select className="status" id="status-select">
+            <select className="status" id="status-select" defaultValue={status}>
               <option className="status-option" value="not started">not started</option>
               <option className="status-option" value="todo">todo</option>
               <option className="status-option" value="in progress">in progress</option>
