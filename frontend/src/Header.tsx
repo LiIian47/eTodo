@@ -1,14 +1,19 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "./pages/images/todoLogo.png";
 import { Search, Moon, SunMedium, LogOut, UserCog } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Fade as Hamburger } from "hamburger-react";
 
-const Header = () => {
+type HeaderProps = {
+  onSearchChange: (searchTerm: string) => void;
+};
+
+const Header = ({ onSearchChange }: HeaderProps) => {
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const initialThemeIsLight = localStorage.getItem('theme') === 'light';
   const [theme, setTheme] = useState(initialThemeIsLight);
+  const [searchContent, setSearchContent] = useState("");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -20,18 +25,20 @@ const Header = () => {
   const handleColorMode = () => {
     setTheme(!theme);
     const body = document.getElementById('body');
-    body.classList.toggle('light-mode');
-    if (body.classList.contains('light-mode')){
-      localStorage.setItem("theme", "light");
-    } else {
-      localStorage.setItem("theme", "dark");
+    if (body){
+      body.classList.toggle('light-mode');
+      if (body.classList.contains('light-mode')){
+        localStorage.setItem("theme", "light");
+      } else {
+        localStorage.setItem("theme", "dark");
+      }
     }
   };
 
   useEffect(() =>{
     const savedTheme = localStorage.getItem('theme');
     const body = document.getElementById('body');
-    if (savedTheme === 'light') {
+    if (body && savedTheme === 'light') {
         body.classList.add('light-mode');
     }
   }, []);
@@ -44,12 +51,31 @@ const Header = () => {
     window.dispatchEvent(new Event('toggleAddTaskMenu'));
   };
 
+  async function handleSearch (){
+    const token = localStorage.getItem("token");
+    const response = await fetch(`http://localhost:3000/todos/title/${searchContent}`, {
+      method: "GET",
+      headers: {"Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,},
+    });
+    if (!response.ok) {
+      alert("You are now disconnected");
+      navigate("/login");
+    }
+    const data = await response.json();
+    console.log(data)
+  }
+
+  useEffect(() => {
+    onSearchChange(searchContent);
+  }, [searchContent, onSearchChange]);
+
 
   return (
     <header className="header">
       <img className="headerImg" src={logo} alt="Logo" />
       <div className="search-container">
-        <input type="text" name="searchbar" id="searchbar" placeholder="Search Tasks"/>
+        <input type="text" name="searchbar" id="searchbar" placeholder="Search Tasks" value={searchContent} onChange={(e) => setSearchContent(e.target.value)}/>
         <div className="search-icon">
           <Search color="grey" size={24} />
         </div>

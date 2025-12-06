@@ -2,11 +2,26 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const secure = require("../../middleware/secure");
-const {getTodoWhitUserId, getAllFromTodo, getTodoWhitId, postTodo, putTodo, deleteTodo, changeStatus} = require("./todos.query");
+const {getTodoWhitUserId, getAllFromTodo, getTodoWhitId, postTodo, putTodo, deleteTodo, changeStatus, getTitleFromTodo} = require("./todos.query");
 
 router.get("/todos", auth, /*secure({ lock: true }),*/ async (req, res) => {
   try {
     const result = await getAllFromTodo();
+    if (result.length === 0) {
+      res.json({ msg: "Not found" });
+    }
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "Internal server error" });
+  }
+});
+
+router.get("/todos/title/:searchContent", auth, /*secure({ lock: true }),*/ async (req, res) => {
+  try {
+    const user_id = req.payload.id
+    const params = req.params.searchContent;
+    const result = await getTitleFromTodo(params, user_id);
     if (result.length === 0) {
       res.json({ msg: "Not found" });
     }

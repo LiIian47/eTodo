@@ -120,14 +120,12 @@ export function TaskCard({ task, refresh }: TaskCardProps) {
 
   return (
     <div>
-      <div
-        ref={setNodeRef} {...attributes} {...listeners}
-        className="todo-card cursor-grab rounded-lg bg-neutral-700 p-2 shadow-sm hover:shadow-md"
-        style={style}> 
+      <div ref={setNodeRef} {...attributes} {...listeners} className="todo-card shadow-sm hover:shadow-md" style={style}> 
         <div className='card-title'>{title}</div>
-        <div className="bottom">
+        <div className='card-description'>{description}</div>
+        <div className="card-bottom">
           <button onPointerDown={(e) => e.stopPropagation()} onClick={() => setShowUpdateMenu(true)} type="button" className="btn-view"><ScanEye/></button>
-          <p className="mt-2 text-sm text-neutral-300">{due_time.substr(0,16)}</p>
+          <div className="card-time">{due_time.substr(0,16)}</div>
         </div>
       </div>
       {showUpdateMenu && createPortal(<UpdateFunction />, document.body)}

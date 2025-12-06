@@ -14,7 +14,11 @@ const COLUMNS: ColumnType[] = [
   { id: 'done', title: 'Done' },
 ];
 
-export function SetDragAndDrop() {
+type SetDragAndDropProps = {
+  searchTerm: string;
+};
+
+export function SetDragAndDrop({ searchTerm }: SetDragAndDropProps) {
   const [tasks, setTasks] = useState<Array<Task>>([]);
   const [showAddMenu, setShowAddMenu] = useState(false);
   const navigate = useNavigate();
@@ -119,7 +123,12 @@ export function SetDragAndDrop() {
     return () => window.removeEventListener('toggleAddTaskMenu', handleOpenMenu);
   }, [showAddMenu]);
 
-  
+  const filteredTasks = tasks.filter(task => 
+    searchTerm.trim() === '' ||
+    task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    task.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <div className="todoContainer">
@@ -128,7 +137,7 @@ export function SetDragAndDrop() {
             <Column
               key={column.id}
               column={column}
-              tasks={tasks.filter((task) => task.status === column.id)}
+              tasks={filteredTasks.filter((task) => task.status === column.id)}
               refresh={getTodo}
             />
           ))}

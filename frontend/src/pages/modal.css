@@ -86,12 +86,6 @@ input {
   field-sizing: content;
 }
 
-.card-title {
-  font-weight: bold;
-  font-size: 1.5rem;
-  width: 250px;
-  padding: 8px;
-}
 
 .form-submit-button{
   height: 40px;

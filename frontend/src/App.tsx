@@ -8,6 +8,7 @@ import Settings from "./pages/settings";
 import Login_Register from "./pages/Login-Register"
 import NotFound from "./pages/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 const NotFoundContainer = () => (
   <div className="mainContainer">
@@ -15,12 +16,20 @@ const NotFoundContainer = () => (
   </div>
 );
 
-const TodoContainer = () => (
-  <div className="mainContainer">
-    <Header />
-    <SetDragAndDrop />
-  </div>
-);
+const TodoContainer = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (term: string) => {
+    setSearchTerm(term);
+  };
+
+  return (
+    <div className="mainContainer">
+      <Header onSearchChange={handleSearchChange} />
+      <SetDragAndDrop searchTerm={searchTerm} />
+    </div>
+  );
+};
 
 const LoginContainer = () => (
   <div className="mainContainer">

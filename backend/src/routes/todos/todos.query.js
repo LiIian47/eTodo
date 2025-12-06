@@ -22,6 +22,18 @@ async function getTodoWhitUserId(id) {
   }
 }
 
+async function getTitleFromTodo(params, user_id) {
+  try {
+    const formatParams = `%${params}%`;
+    const conn = await db;
+    const [result] = await conn.query(`SELECT title FROM todo WHERE title LIKE ? AND user_id = ?;`, [formatParams, user_id]);
+    return result;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 async function getTodoWhitId(id) {
   try {
     const conn = await db;
@@ -87,5 +99,4 @@ async function deleteTodo(id) {
   }
 }
 
-module.exports = {getAllFromTodo, getTodoWhitUserId, getTodoWhitId, postTodo, putTodo, deleteTodo, changeStatus
-};
+module.exports = {getAllFromTodo, getTodoWhitUserId, getTodoWhitId, postTodo, putTodo, deleteTodo, changeStatus, getTitleFromTodo};
