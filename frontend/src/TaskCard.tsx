@@ -2,7 +2,7 @@ import { useDraggable } from '@dnd-kit/core';
 import type { Task } from './types';
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { TextAlignStart, X, Trash, ScanEye} from "lucide-react";
+import { TextAlignStart, X, Trash, Ellipsis} from "lucide-react";
 import "./pages/modal.css";
 import 'overlayscrollbars/overlayscrollbars.css';
 
@@ -120,13 +120,13 @@ export function TaskCard({ task, refresh }: TaskCardProps) {
 
   return (
     <div>
-      <div ref={setNodeRef} {...attributes} {...listeners} className="todo-card shadow-sm hover:shadow-md" style={style}> 
-        <div className='card-title'>{title}</div>
-        <div className='card-description'>{description}</div>
-        <div className="card-bottom">
-          <button onPointerDown={(e) => e.stopPropagation()} onClick={() => setShowUpdateMenu(true)} type="button" className="btn-view"><ScanEye/></button>
-          <div className="card-time">{due_time.substr(0,16)}</div>
+      <div ref={setNodeRef} {...attributes} {...listeners} className="todo-card shadow-sm hover:shadow-md" style={style}>
+        <div className='card-header'>
+          <div className='card-title'>{title}</div>
+          <button className='card-menu' onPointerDown={(e) => e.stopPropagation()} onClick={() => setShowUpdateMenu(true)} type="button"><Ellipsis/></button>
         </div>
+        <div className='card-description'>{description}</div>
+        <div className="card-time">{due_time.substr(0,16)}</div>
       </div>
       {showUpdateMenu && createPortal(<UpdateFunction />, document.body)}
     </div>

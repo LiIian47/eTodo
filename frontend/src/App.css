@@ -44,14 +44,6 @@
   background-color: var(--color-background-todo-card);
 }
 
-.card-title {
-  font-weight: bold;
-  font-size: 1.3rem;
-  border-radius: 8px 8px 0 0;
-  padding: 4px 10px;
-  background-color: var(--color-background-title);
-}
-
 .card-description {
   padding: 5px 8px;
 }
@@ -89,9 +81,31 @@
 }
 
 .todo-title {
+  font-weight: bolder;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--color-text-general);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+
+  border-radius: 8px 8px 0 0;
+  padding: 5px 10px;
+  background-color: var(--color-background-title);
+}
+
+.card-menu{
+  display: flex;
+  align-items: start;
+  padding-left: 5px;
+}
+
+.card-title {
   color: var(--color-text-general);
   font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 1.1rem;
 }
 
 .card-bottom {
@@ -103,6 +117,8 @@
   font-size: 0.8rem;
   display: flex;
   align-items: end;
+  justify-content: end;
+  padding: 0 5px 5px 5px;
 }
 
 .card-title, .card-description {
@@ -118,7 +134,7 @@ header {
   align-items: center;
   width: 100%;
   margin: 3vh 0;
-  padding: 15px 5px 15px 5px;
+  padding: 15px 10px 15px 10px;
   border: solid 5px transparent;
   border-radius: 30px;
   background: linear-gradient(var(--color-background-header), var(--color-background-header)) padding-box, linear-gradient(to right, rgb(240, 228, 228), rgb(179, 211, 211), rgb(238, 218, 164), rgb(240, 241, 176), rgb(238, 173, 219)) border-box;
@@ -251,6 +267,15 @@ img.headerImg {
   .dropdown-menu {
     top: 160px;
     right: 60px;
+  }
+}
+
+@media (max-width: 490px){
+  #searchbar{
+    margin: 0;
+  }
+  .search-icon{
+    right: 10px;
   }
 }
 

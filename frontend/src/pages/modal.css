@@ -37,7 +37,7 @@ input {
   background-color: var(--color-background-modal); 
   color: var(--color-text-default);
   padding: 45px 20px 20px 20px;
-  border-radius: 24px;
+  border-radius: 15px;
 }
 
 .overlay-background {
