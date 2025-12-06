@@ -51,25 +51,9 @@ const Header = ({ onSearchChange }: HeaderProps) => {
     window.dispatchEvent(new Event('toggleAddTaskMenu'));
   };
 
-  async function handleSearch (){
-    const token = localStorage.getItem("token");
-    const response = await fetch(`http://localhost:3000/todos/title/${searchContent}`, {
-      method: "GET",
-      headers: {"Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,},
-    });
-    if (!response.ok) {
-      alert("You are now disconnected");
-      navigate("/login");
-    }
-    const data = await response.json();
-    console.log(data)
-  }
-
   useEffect(() => {
     onSearchChange(searchContent);
   }, [searchContent, onSearchChange]);
-
 
   return (
     <header className="header">
