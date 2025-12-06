@@ -15,7 +15,7 @@ export function Column({ column, tasks, refresh}: ColumnProps) {
 
   return (
     <div className="todo">
-      <h2 className="mb-4 font-semibold text-neutral-100">{column.title}</h2>
+      <h2 className="todo-title">{column.title}</h2>
       <div ref={setNodeRef} className="flex flex-1 flex-col gap-4">
         {tasks.map((task) => {
           return <TaskCard key={task.id} task={task} refresh={refresh}/>;

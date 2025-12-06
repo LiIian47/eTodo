@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import logo from "./pages/images/todoLogo.png";
 import { Search, Moon, SunMedium, LogOut, UserCog } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,8 @@ import { Fade as Hamburger } from "hamburger-react";
 const Header = () => {
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [theme, setTheme] = useState(true);
+  const initialThemeIsLight = localStorage.getItem('theme') === 'light';
+  const [theme, setTheme] = useState(initialThemeIsLight);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -18,8 +19,22 @@ const Header = () => {
 
   const handleColorMode = () => {
     setTheme(!theme);
-    setIsDropdownOpen(false);
+    const body = document.getElementById('body');
+    body.classList.toggle('light-mode');
+    if (body.classList.contains('light-mode')){
+      localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
+    }
   };
+
+  useEffect(() =>{
+    const savedTheme = localStorage.getItem('theme');
+    const body = document.getElementById('body');
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+    }
+  }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -28,6 +43,7 @@ const Header = () => {
   const handleAddTask = () => {
     window.dispatchEvent(new Event('toggleAddTaskMenu'));
   };
+
 
   return (
     <header className="header">

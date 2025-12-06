@@ -1,7 +1,45 @@
+:root {
+  --color-background-body: #242424;
+  --color-background-todo-card: #404141;
+  --color-background-todo: rgb(43, 42, 42);
+  --color-background-header: #1a1a1a;
+  --color-background-dropdown-menu: #1a1a1a;
+  --color-background-menu-child: #333;
+  --color-background-menu-child-hover: #444;
+  --color-background-searchbar: #f2f2f2;
+  --color-text-general: white;
+  --color-border-searchbar: #555;
+}
+
+.light-mode {
+  --color-background-body: #f0f0f0;
+  --color-background-todo-card: #ffffff;
+  --color-background-todo: #eaeaea;
+  --color-background-header: #e0e0e0;
+  --color-background-dropdown-menu: #e0e0e0;
+  --color-background-menu-child: #f0f0f0;
+  --color-background-menu-child-hover: #dddddd;
+  --color-background-searchbar: #ffffff;
+  --color-text-general: #1a1a1a;
+  --color-border-searchbar: #bbbbbb;
+}
+
 #root {
   width: 100%;
   height: 100%;
 }
+
+#body {
+  background-color: var(--color-background-body);
+}
+
+
+.todo-card {
+  width: auto;
+  color: var(--color-text-general);
+  background-color: var(--color-background-todo-card);
+}
+
 
 .mainContainer {
   width: 100%;
@@ -29,13 +67,15 @@
   min-width: 250px;
   height: auto;
   border-radius: 15px;
-  background-color: rgb(43, 42, 42);
+  background-color: var(--color-background-todo);
   padding: 15px;
   min-height: 165px;
 }
 
-.todo-card {
-  width: auto;
+.todo-title {
+  color: var(--color-text-general);
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 header {
@@ -48,7 +88,7 @@ header {
   padding: 15px 5px 15px 5px;
   border: solid 5px transparent;
   border-radius: 30px;
-  background: linear-gradient(#1a1a1a, #1a1a1a) padding-box, linear-gradient(to right, rgb(240, 228, 228), rgb(179, 211, 211), rgb(238, 218, 164), rgb(240, 241, 176), rgb(238, 173, 219)) border-box;
+  background: linear-gradient(var(--color-background-header), var(--color-background-header)) padding-box, linear-gradient(to right, rgb(240, 228, 228), rgb(179, 211, 211), rgb(238, 218, 164), rgb(240, 241, 176), rgb(238, 173, 219)) border-box;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -65,13 +105,13 @@ header {
   height: 35px;
   width: 100%;
   border-radius: 20px;
-  border: solid 3px #555;
+  border: solid 3px var(--color-border-searchbar);
   padding: 5px 50px 5px 15px;
   margin-right: 15px;
   color: #1a1a1a;
   font-weight: 500;
   font-size: 1rem;
-  background-color: #f2f2f2;
+  background-color: var(--color-background-searchbar);
   transition: all 0.3s ease;
 }
 
@@ -101,8 +141,8 @@ img.headerImg {
   position: absolute;
   top: 110px;
   right: 55px;
-  background-color: #1a1a1a;
-  border: solid 2px #555;
+  background-color: var(--color-background-dropdown-menu);
+  border: solid 2px var(--color-border-searchbar);
   border-radius: 10px;
   padding: 10px;
   display: flex;
@@ -116,10 +156,10 @@ img.headerImg {
   width: auto;
   padding: 0 15px;
   gap: 5px;
-  background-color: #333;
-  color: white;
+  background-color: var(--color-background-menu-child);
+  color: var(--color-text-general);
   border-radius: 10px;
-  border: solid 2px #555;
+  border: solid 2px var(--color-border-searchbar);
   text-align: center;
   display: flex;
   align-items: center;
@@ -129,17 +169,17 @@ img.headerImg {
 }
 
 .menuChild:hover {
-  background-color: #444;
+  background-color: var(--color-background-menu-child-hover);
 }
 
 .btn-create {
   height: 45px;
   padding: 0 15px;
   gap: 5px;
-  background-color: #333;
-  color: white;
+  background-color: var(--color-background-menu-child);
+  color: var(--color-text-general);
   border-radius: 15px;
-  border: solid 3px #555;
+  border: solid 3px var(--color-border-searchbar);
   text-align: center;
   display: flex;
   align-items: center;
@@ -149,7 +189,7 @@ img.headerImg {
 }
 
 .btn-create:hover {
-  background-color: #444;
+  background-color: var(--color-background-menu-child-hover);
 }
 
 .btn-update {
@@ -167,8 +207,6 @@ img.headerImg {
   align-items: center;
   gap: 15px;
 }
-
-
 
 @media (max-width: 650px) {
   img {

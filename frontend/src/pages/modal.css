@@ -1,3 +1,28 @@
+:root {
+  --color-background-modal: #27272a;
+  --color-background-overlay: black;
+  --color-background-button: #333;
+  --color-background-button-hover: #444;
+  --color-background-status-option: #414041;
+
+  --color-text-default: white;
+  --color-border-input-focus: white;
+  --color-border-input-default: white;
+  --color-border-button: #555;
+}
+
+.light-mode {
+  --color-background-modal: #ffffff;
+  --color-background-overlay: #1a1a1a;
+  --color-background-button: #f0f0f0;
+  --color-background-button-hover: #dddddd;
+  --color-background-status-option: #dddddd;
+  
+  --color-text-default: black;
+  --color-border-input-focus: #1a1a1a;
+  --color-border-input-default: #bbbbbb;
+  --color-border-button: #bbbbbb;
+}
 input {
   all: unset;
 }
@@ -9,7 +34,8 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #27272a;
+  background-color: var(--color-background-modal); 
+  color: var(--color-text-default);
   padding: 45px 20px 20px 20px;
   border-radius: 24px;
 }
@@ -17,7 +43,7 @@ input {
 .overlay-background {
   position: fixed;
   inset: 0;
-  background-color: black;
+  background-color: var(--color-background-overlay); 
   opacity: 0.5;
   z-index: 0;
 }
@@ -45,7 +71,7 @@ input {
 
 .form-input-field:focus {
   margin:0;
-  border: 2px white solid;
+  border: 2px var(--color-border-input-focus) solid; 
   border-radius: 5px;
 }
 
@@ -54,7 +80,7 @@ input {
   padding: 0 5px;
   width: 100%;
   resize: none;
-  border: solid white 2px;
+  border: solid var(--color-border-input-default) 2px; 
   border-radius: 5px;
   min-height: 52px;
   field-sizing: content;
@@ -70,10 +96,10 @@ input {
 .form-submit-button{
   height: 40px;
   padding: 0 20px;
-  background-color: #333;
-  color: white;
+  background-color: var(--color-background-button); 
+  color: var(--color-text-default); 
   border-radius: 12px;
-  border: solid 3px #555;
+  border: solid 3px var(--color-border-button); 
   text-align: center;
   display: flex;
   align-items: center;
@@ -83,7 +109,7 @@ input {
 }
 
 .form-submit-button:hover {
-  background-color: #444;
+  background-color: var(--color-background-button-hover);
 }
 
 .bottom {
@@ -124,8 +150,8 @@ input {
 }
 
 .status-option {
-  color: white;
-  background-color: #414041;
+  color: var(--color-text-default); 
+  background-color: var(--color-background-status-option); 
 }
 
 

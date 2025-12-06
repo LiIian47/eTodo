@@ -1,3 +1,35 @@
+:root {
+  --color-background-main: #242424;
+  --color-text-title: white;
+  --color-text-label: white;
+  --color-input-background: white;
+  --color-input-text: black;
+  --color-button-primary: #007bff;
+  --color-button-primary-hover: #248bfa;
+  --color-button-secondary: transparent;
+  --color-button-secondary-hover: #1f2122;
+  --color-text-button: white;
+  --color-box-shadow-button: rgba(255, 255, 255, 0.5);
+}
+
+.light-mode {
+  --color-background-main: #f0f0f0;
+
+  --color-text-title: #1a1a1a; 
+  --color-text-label: #1a1a1a;
+  --color-input-text: #1a1a1a;
+
+  --color-input-background: #ffffff;
+  
+  --color-button-secondary: transparent;
+  --color-button-secondary-hover: #dddddd;
+
+  --color-box-shadow-button: rgba(0, 0, 0, 0.3);
+
+  --color-text-button: white; 
+  --color-button-primary: #007bff;
+  --color-button-primary-hover: #248bfa;
+}
 
 .container{
   width: 100%;
@@ -18,6 +50,7 @@
 .title {
   font-size: 3rem;
   font-weight: bold;
+  color: var(--color-text-title);
 }
 
 .input-group {
@@ -29,52 +62,53 @@
 
 .input-group label {
   font-size: 1.5rem;
-  color: white;
   margin-right: 10px;
   white-space: nowrap;
+  color: var(--color-text-label); 
 }
 
 .input-group input {
-  background-color: white;
-  color: black;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   font-size: 1.2rem;
   width: 100%;
+  background-color: var(--color-input-background); 
+  color: var(--color-input-text);
 }
 
 .button{
   all: unset; 
   text-align: center;
-  background-color: #007bff;
-  color: white;
   border-radius: 5px;
   padding: 5px 15px;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  background-color: var(--color-button-primary); 
+  color: var(--color-text-button);
+  box-shadow: 0 0 0 1px var(--color-box-shadow-button) inset;
 }
 
 .button:hover {
-  background-color: #248bfa;
+  background-color: var(--color-button-primary-hover);
 }
 
 .register-login {
   all: unset; 
   text-align: center;
-  color: white;
   border-radius: 5px;
   padding: 5px 15px;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  background-color: var(--color-button-secondary);
+  color: var(--color-text-label);
+  box-shadow: 0 0 0 1px var(--color-box-shadow-button) inset;
 }
 
 .register-login:hover {
-  background-color: #1f2122;
+  background-color: var(--color-button-secondary-hover);
 }
 
 .logo-container {
